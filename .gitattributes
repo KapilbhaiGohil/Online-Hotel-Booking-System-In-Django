@@ -1,2 +1,2 @@
-admin/ linguist-detectable=false
+/admin/ linguist-detectable=false
 *.py linguist-detectable=true
