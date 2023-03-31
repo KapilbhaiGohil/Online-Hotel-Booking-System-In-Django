@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Booking form{% endblock title %}
+{% block content %}
+<style>
+    table{
+        font-family:Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 90%;
+        border-collapse: collapse;
+    }
+    th{
+        background: #509e74;
+    }
+    td,th{
+        border: 2px solid #000000;
+        text-align: center;
+        padding: 15px;
+    }
+    tr:nth-child(even){
+        background-color: #c9c9c9dd;
+    }
+</style>
+<h1>Booking form</h1>
+<p style ="font-size:20px;">Pls verify details for booking</p>
+<form method = 'post' action = "{% url 'Hotel:booking_form' %}">
+    {% if form.errors %}
+        </p>this is a error</p>
+    {% endif %}
+    <div  style = "display:flex; padding:20px;border:solid black 1px;
+    background-color: #cccccc;margin-right: 200px;">
+        {% csrf_token %}
+        <span >
+            <p>
+                <label for="id_First_name">First name:</label>
+                <input type="text" name="First_name" value = '{{request.user.first_name}}' required id="id_First_name">
+            </p>
+            <p>
+                <label for="id_Last_name">Last name:</label>
+                <input type="text" name="Last_name" value = '{{request.user.last_name}}' required id="id_Last_name">
+              </p>
+              <p>
+                <label for="id_Email">Email:</label>
+                <input type="email" name="Email" required value = '{{request.user.email}}' id="id_Email">
+            </p>
+        </span>
+        <span   style="width:100%;margin-left: 70px;">
+            <table>
+                <tr>
+                    <th>Room Image</th>
+                    <th>Room No</th>
+                    <th>Room Type</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Price Per Night</th>
+                    <th>Total Price</th>
+                </tr>
+                    <tr>
+                            <td><img src="{{room.room_image.url}}"  style="margin:9px" height=200px alt=""></td>
+                            <td name="Room_no">{{room.room_no}}</td>
+                            <input type="hidden" name="Room_no" required value="{{room.room_no}}" readonly id="id_Room_no">
+                            <input type="hidden" name="Capasity" required value="{{room.capasity}}" readonly id="id_Capasity">
+                            <input type="hidden" name="Beds" required value="{{room.beds}}" readonly id="id_Beds">
+                            <input type="hidden" name="Room_type" required value="{{room.room_type}}" readonly id="id_Room_type">
+                            <input type="hidden" name="total_price" required value="{{ amount }}" readonly id="id_total_price">
+                            <input type="hidden" name="check_out" required value="{{checkout}}" readonly id="id_check_out">
+                            <input type="hidden" name="check_in" required value="{{checkin}}" readonly id="id_check_in">
+                            <input type="hidden" name="username"  readonly value='{{request.user.username}}'  maxlength="150" required="" id="id_username">
+                            <td>{{room.room_type}}</td>
+                            <td>{{checkin}}</td>
+                            <td>{{checkout}}</td>
+                            <td>{{room.current_price_pernight}}₹</td>
+                            <td>{{amount}}₹</td>
+                    </tr>
+                </table>
+        </span>
+    </div>
+        <p><input type = 'submit'name ="booking" value='Make payment'></p>
+</form>
+        {% endblock content %}

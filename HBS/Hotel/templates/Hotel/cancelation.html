@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+Cancellation form
+{% endblock title %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+<h1>Cancellation Info</h1>
+<p>Your booking has been succesfully cancelled.</p>
+<p>
+    Cancellation id. {{booking.id}}<br>
+    <span class="secondanary">
+        Booking time: {{booking.created}}
+    </span>
+</p>
+<h3>Bill to</h3>
+<p>
+    Name  :{{booking.gauest_username.first_name}} {{booking.gauest_username.last_name}}<br>
+    Email : {{booking.gauest_username.email}}<br>
+</p>
+<h3>Booking information</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Room No</th>
+            <th>Room Type</th>
+            <th>Price</th>
+            <th>check in </th>
+            <th>check out</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row{% cycle "1" "2" %}">
+            <td>{{booking.room_no.room_no}}</td>
+            <td>{{booking.room_no.room_type}}</td>
+            <td>{{booking.room_no.current_price_pernight}}₹</td>
+            <td>{{booking.check_in}}</td>
+            <td>{{booking.check_out}}</td>
+        </tr>
+        <tr class="total">
+            <td colspan="4">Total amount </td>
+            <td class="num">{{cancel.booking.total_price}}₹</td>
+        </tr>
+    </tbody>
+</table>
+<span class="pending">
+    Canceled
+</span>
+<span>Your Amount Should Be Refunded Within a Week</span><br>
+<p>You Can <a href="{% url 'Hotel:printcancel' id=booking.id %}">Print Cancellation info</a></p>
+<p>You Can <a href="{% url 'Hotel:showbookings' %}">Show Your Bookings Here</a></p>
+{% endblock content %}

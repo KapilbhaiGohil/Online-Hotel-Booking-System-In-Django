@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% comment %} {% load static %} {% endcomment %}
+{% block title %}Book a room{% endblock title %}
+{% block content %}
+<h1>Check Availability</h1>
+{% if error %}
+<p style="color:#cc0033;">{{error}}</p>
+{% endif %}
+<form method="post">
+    <div  style="color:blue;">
+        {% if form %}
+        {{form.as_table}}   
+        <input  type="submit" name ='search'value="Search">
+        {% else %}
+        <tr>
+            <th><label for="id_checkin">Checkin:</label></th>
+            <td>
+              <input type="date" name="checkin" value ='{{check_in}}' disabled required id="id_checkin">
+            </td>
+          </tr>
+          <tr>
+            <th><label for="id_checkout">Checkout:</label></th>
+            <td>
+              <input type="date" name="checkout"  value = "{{check_out}}"disabled required id="id_checkout">
+            </td>
+          </tr>
+        <input  type="submit" name = 'search'value="Search For Another Dates">
+        {% endif %}
+        {% csrf_token %}
+    </div>
+</form>
+<hr style ="margin:0px 0px 0px 0px;">
+<form method = 'post'>
+    {% comment %} <div> {% endcomment %}
+        {% if check %}
+        {%if not rooms %}
+        <h1>Sorry,right now All rooms are booked in given dates !</h1>
+        {% else %}
+        <h1>Available rooms</h1>
+        {% for room in rooms %}
+        <div style="display:flex;border:4px ridge;background: #dbdfe0;border-color: blanchedalmond;">
+            {% csrf_token %}
+            <span>
+            <img src="{{room.room_image.url}}" style="margin:9px" height=308px alt="">
+            </span>
+            <input type="hidden" name="checkin" value ='{{check_in}}' disabled required id="id_checkin">
+            <input type="hidden" name="checkout"  value = "{{check_out}}"disabled required id="id_checkout">
+            <div style="padding: 0px 10px 0px 100px;">
+                <p>Room No : {{room.room_no}}</p>
+                <p>Room Beds : {{room.beds}}</p>
+                <p>Room Price per night : {{room.current_price_pernight}} ₹</p>
+                <p>Room description : {{room.room_description}}</p>
+                <button style="font-weight: bold;
+                background: #12c064;
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 14px;margin: 40px 0px 0px 0px;
+                text-transform: uppercase" type="submit" name ='submit' value="{{room.room_no}}">Book at just ₹{{room.current_price_pernight}}</button>
+            </div>
+        </div><br>
+        {% endfor %}
+        {% endif %} 
+      {% comment %} </div> {% endcomment %}
+</form>
+</div>
+{% endif %}
+{% endblock content %}

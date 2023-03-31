@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Already booocked{% endblock title %}
+{% block content %}
+<h1>Room is already boocked</h1>
+<p>This room is already booked</p>
+<p>You can book another <a href="{% url 'Hotel:room_details' %}">room here</a></p>
+{% endblock content %}
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+Update Profile
+{% endblock title %}
+{% block content %}
+<style>
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+</style>
+{% if verified %}
+<h1>Profile updation information</h1>
+<p>Your profile has been succesfully updated.</p>
+{% else %}
+<h1>OTP Verification</h1>
+<p>Enter the otp sent to your updated mail</p>
+<form method = 'post'>
+    {% csrf_token %}
+    {% if error %}
+    <p style='color:#d75151;'>Pls enter the otp sent to the your email address</p>
+    {% endif %}
+    <p><input type='number' pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required name ='code'>
+        <input type='submit'  name = 'verify' value ='Verify'>
+    </p>
+</form>
+{% comment %} <script type = "text/javascript" >  
+    function preventBack() { window.history.forward(); }  
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+</script>  {% endcomment %}
+{% endif %}
+{% endblock content %}

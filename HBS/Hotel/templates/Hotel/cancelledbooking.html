@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Cancelled Booking{% endblock title %}
+{% block content %}
+    <style>
+        table{
+            font-family:Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        th{
+            background: #509e74;
+        }
+        td,th{
+            border: 2px solid #000000;
+            text-align: center;
+            padding: 15px;
+        }
+        tr:nth-child(even){
+            background-color: #c9c9c9dd;
+        }
+        tr:hover{background-color:#a9a7a7;}
+    </style>
+<h1>Cancelled Booking Information</h1>
+{% if not info %}
+<p>No bookinngs cancelled by you</p>
+{% comment %} <p>You can <a href="{% url 'Hotel:room_details' %}">Book a room</a><p> {% endcomment %}
+{% else %}
+<p>Here is your booking cancellation information</p>
+<center>
+    <form method = 'post'>
+        <table>
+            <tr>
+                <th>Room Image</th>
+                <th>Room No</th>
+                <th>Room Type</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Total Price</th>
+                <th>cancellation info</th>
+            </tr>
+            {% for i in info  %}
+                <tr>
+                    {% comment %} {% for room in rooms %} {% endcomment %}
+                        {% comment %} {% if room == i.room_no %} {% endcomment %}
+                        <td><img src="{{i.room_no.room_image.url}}"  style="margin:9px" height=200px alt=""></td>
+                        <td>{{i.room_no.room_no}}</td>
+                        <td>{{i.room_no.room_type}}</td>
+                        {% comment %} {% endif %} {% endcomment %}
+                    {% comment %} {% endfor %} {% endcomment %}
+                    <td>{{i.check_in}}</td>
+                    <td>{{i.check_out}}</td>
+                    <td>{{i.total_price}}₹</td>
+                    <input type='hidden' value = {{i.total_price}} name = "print">
+                    <td><b><a href="{% url 'Hotel:printcancel' i.id %}" type="submit"  style="color: rgb(43, 43, 195);">Print cancellation Bill</a></b><br><br>
+                    <tr>
+            {% endfor %}
+        </table>
+    </form>
+</center>
+{% endif %}
+{% endblock content %}

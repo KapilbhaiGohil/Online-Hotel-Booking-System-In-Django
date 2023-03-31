@@ -1,0 +1,183 @@
+@import url(//fonts.googleapis.com/css?family=Muli);
+body {
+    margin:0;
+    padding:0;
+    font-family:helvetica, sans-serif;
+    background-color: rgb(226, 211, 114);
+}
+p {
+    line-height: 1.8;
+    color: #631c1f;
+}
+
+a {
+    color: #127725;
+    text-decoration:none;
+}
+
+                .sidenav {
+                    height: 100%;
+                    width: 0;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #12c064
+                    ;
+                    overflow-x: hidden;
+                    transition: 0.5s;
+                    padding-top: 60px;
+                  }
+                  
+                  .sidenav a {
+                    padding: 8px;
+                    position: relative;
+                    left: 0;
+                    text-align: left    ;
+                    font-size: 20px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                  }
+                  .sidenav a:hover{ text-decoration: underline;}
+                  
+                  .sidenav a:hover {
+                    color: #f1f1f1;
+                    
+                  }
+                  
+                  .sidenav .closebtn {
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                  }
+                  
+                  @media screen and (max-height: 450px) {
+                    .sidenav {padding-top: 15px;}
+                    .sidenav a {font-size: 18px;}
+                  }
+
+a:hover {
+    color:rgb(59, 208, 18);
+    text-decoration: underline;
+}
+h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; }
+
+h1 {
+    color: #631c1f;
+    border-bottom:1px solid #bbb;
+    padding:0 0 10px 0;
+    margin:10px 0 20px 0;
+}
+
+h2 {
+    color: #631c1f;
+    margin:30px 0 20px;
+    font-size: 30px;
+}
+
+ol {
+    color: #631c1f;
+    line-height:1.5;
+}
+
+
+#header {
+    padding:10px 30px;
+    font-size:20px;
+    background:#12c064;
+    
+    color:#fff;
+    /* border-bottom:4px solid #1cdf78; */
+    overflow:auto;
+}
+
+#header .logo {
+    font-family: 'Muli', sans-serif;
+    float:left;
+    color:#f3f7cc;
+    font-size:40px;
+    margin-right:1%;
+}
+label{
+    color: #631c1f;
+}
+
+#header ul.menu {
+    list-style:none;
+    float:left;
+    margin:0;
+    padding:11px;
+}
+#header ul.menu li {
+    float:left;
+    padding:4px 10px;
+}
+
+#header ul.menu li.selected a, #header ul.menu li.selected a:hover {
+    color:#ffffff;
+    font-weight:bold;
+}
+
+#header a {
+    color:#f3f7cc;
+    text-align: center;
+}
+#header a:hover {
+    color:#fff;
+}
+
+#header .user {
+    float:right;
+    padding-top:15px;
+}
+
+#content {
+    padding:30px 100px;
+}
+
+/* forms */
+form {
+    overflow:auto;
+}
+
+form p {
+    width:100%;
+    overflow:auto;
+}
+
+label {
+    float:left;
+    clear:both;
+    color:#333;
+    margin-bottom:4px;
+}
+input, textarea {
+    clear:both;
+    float:left;
+    margin:0 0 10px;
+    background:#efefef;
+    border:0;
+    padding:6px 10px;
+    font-size:14px;
+}
+button:hover{
+    cursor: pointer;
+}
+input[type=submit], a.button {
+    cursor: pointer;
+    font-weight:bold;
+    background:#12c064;
+    color:#fff;
+    padding:10px 20px;
+    font-size:14px;
+    text-transform:uppercase;
+}
+.errorlist {
+    color:#cc0033;
+    float:left;
+    clear:both;
+    padding-left:10px;
+}

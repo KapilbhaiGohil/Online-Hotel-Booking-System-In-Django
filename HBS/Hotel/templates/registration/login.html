@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Log-in{% endblock title %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+{% else %}
+<h1>Log-In</h1>
+<p>Please use the following form to log in.</p>
+<div class='login-form'>
+    <form method = 'post'action = "{% url 'Hotel:login' %}">
+        {{form.as_p}}
+        {% csrf_token %}
+        <p>
+            <b>Don't have an account?</b> <a href="{% url 'Hotel:register' %}"><b>Register here</b></a><br>
+            <a href="{% url 'Hotel:password_reset' %}">
+                <b>Forgotten your password?</b>
+            </a>
+        </p>
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type = 'submit' name = 'login' value = 'Log in'></p>
+    </form>
+</div>
+{% endif %}
+{% endblock  %}

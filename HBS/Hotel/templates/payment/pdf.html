@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+</head>
+<body>
+    <h1>Pride Plaza Hotel</h1>
+    <p>
+        Invoice no. {{booking.id}}<br>
+        <span class="secondanary">
+            Booking time: {{booking.created}}
+        </span>
+    </p>
+    <h3>Bill to</h3>
+    <p>
+        Name  :{{booking.gauest_username.first_name}} {{booking.gauest_username.last_name}}<br>
+        Email : {{booking.gauest_username.email}}<br>
+    </p>
+    <h3>Booking information</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Room No</th>
+                <th>Room Type</th>
+                <th>Price</th>
+                <th>check in </th>
+                <th>check out</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row{% cycle "1" "2" %}">
+                <td>{{booking.room_no.room_no}}</td>
+                <td>{{booking.room_no.room_type}}</td>
+                <td>{{booking.room_no.current_price_pernight}}₹</td>
+                <td>{{booking.check_in}}</td>
+                <td>{{booking.check_out}}</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4">Total amount </td>
+                <td class="num">{{booking.total_price}}₹</td>
+            </tr>
+        </tbody>
+    </table>
+    <span class="paid">
+        Paid
+    </span>
+</body>
+</html>

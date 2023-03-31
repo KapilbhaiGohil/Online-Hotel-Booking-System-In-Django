@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<!-- <h1>My Dashboard</h1>
+<p>welcome to the my Dashboard</p> -->
+<!-- <img style = "max-width: 100%;" src="/static/images/img4.jpg" alt=""> -->
+<style>
+  .lar li{
+    color: #631c1f;
+    font-size: large;
+  }
+</style>
+<div>
+  <h1 style="font-size: 45px;color:#631c1f;margin: 3px;font-weight: bolder;">Pride Hotel</h1>
+  <center>
+    <img src="/static/images/home_logo.png" style="    margin-top: 40px;
+    margin-bottom: -25px;" width="%" alt="">
+    <h2 style="text-align:center;"><strong><span style="color:#631c1f;font-weight: bolder;">TRULY INDIAN</span>. <span style="color:#be863c;font-weight: bolder;">TRADITIONALLY LUXURIOUS</span>. <span style="color:#631c1f;font-weight: bolder;">PURELY PRIDE</span></strong></h2><br>
+    <p style="font-size: 20px;;">
+      Pride Hotels Group is an eminent Indian hospitality brand with a presence in major cities across the country. Envisioned by Mr S. P. Jain in 1987, we focus on extending warm hospitality with an Indian touch. We take pride in creating exceptional hotel stay experiences with a chain of 34 hotels and a lot more to come.
+    </p>
+    <img src="/static/images/top_view.jpg" alt="" width="80%">
+  </center><br><br>
+  <h2 style="color:#631c1f;font-weight: bolder;">Guest Room Features & Amenities</h2><hr>
+  <div style="display: grid;grid-template-columns: 1fr 1fr 1fr;">
+    <ul class="lar">
+      <li>Panoramic windows</li><br><br>
+      <li>Bathrooms with bathtub, separate shower and toilet cabinet</li><br><br>
+      <li>Shower and bathtub include hand shower as well as fixed shower</li><br><br>
+      <li>Heated marble floor, mirror and towel rack</li><br><br>
+      <li>Make-up mirror and hairdryer</li><br><br>
+    </ul>
+    <img src="/static/images/gauest2.jpg" style="max-width: 80%;" alt="">
+    <img src="/static/images/gauest.avif" style="max-width: 100%;"  alt="">
+  </div>
+  <h2 style="color:#631c1f;font-weight: bolder;">Business Services</h2><hr>
+  <div style="">
+    <ul class="lar">
+      <li>Copy service</li><br><br>
+      <li>Secretarial service</li><br><br>
+      <li>Network/Internet printing</li><br><br>
+      <li>Fee for each additional page of outgoing fax</li><br><br>
+      <li>Fee for first page of outgoing fax</li><br><br>
+      <li>Overnight delivery/pickup</li><br><br>
+      <li>Post/parcel</li><br><br>
+      <li>Full-service business center</li><br><br>
+      <li>Full business center, onsite</li><br><br>
+      <li>On-site business center is staffed</li><br><br>
+      <li>Fax service</li><br><br>
+    </ul>
+  </div>
+  <h2 style="color:#631c1f;font-weight: bolder;">Room Descriptions</h2><hr><br><br>
+  <div> 
+    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+        <img src="/static/images/desc.jpg" alt="">
+        <div>
+          <center>
+            <img src="/static/images/desc2.jpg" width="80.5%" style="padding-left: 5px;" alt="">
+          </center>
+        </div>
+      </div><br>
+      <center>
+        <p style="font-size: large;">All our guestrooms are elegantly furnished with handmade furniture include luxury en-suite facilities with complimentary amenities pack, flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest pure white linen and towels.</p>
+    </center>
+    <center>
+      <div style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;">
+        <div style="border: solid 1px;margin: 10px;">
+          <img src="/static/images/King_four_poster.jpg" style="padding: 10px;" width="70% " alt="">
+          <center><p style="font-size: larger;font-weight: bold;">King Size Four Poster
+          </p></center>
+          <center><p style="text-align: justify; margin-left: 60px; margin-right: 60px;">Our king size four poster provides views over landscaped gardens. It has a seating area, ample storage, digital safe and mini fridge.
+          </p></center>
+        </div>
+        <div style="border: solid 1px;margin: 10px;">
+          <img src="/static/images/king_sleigth.jpg" style="padding: 10px;" width="70%" alt="">
+          <center><p style="font-size: larger;font-weight: bold;">King Size Sleigh Bed
+          </p></center>
+          <center><p style="text-align: justify; margin-left: 60px; margin-right: 60px;">Our king size sleigh bedded also provides views over landscaped gardens. It has ample storage, a seating area, digital safe and mini fridge.</p></center>
+        </div>
+        <div style="border: solid 1px;margin: 10px;">
+          <img src="/static/images/deluxking.jpg" style="padding: 10px;" width="70%" alt="">
+          <center><p style="font-size: larger;font-weight: bold;">Deluxe King Size
+          </p></center>
+          <center><p style="text-align: justify; margin-left: 60px; margin-right: 60px;">Our Deluxe king size room has a seating area, ample storage, digital safe and mini fridge. This room can also be configured with an extra roll-away bed for families of 3.
+          </p></center>
+        </div>
+        <div style="border: solid 1px;margin: 10px;">
+          <img src="/static/images/delux_twin.jpg" style="padding: 10px;" width="70%" alt="">
+          <center><p style="font-size: larger;font-weight: bold;">Deluxe Twin/Large Double
+          </p></center>
+          <center><p style="text-align: justify; margin-left: 60px; margin-right: 60px;">Our Deluxe Twin/Large Double also provides views over landscaped gardens. It has a seating area, digital safe and mini fridge. This room can be configured with either 2 single beds or zip and linked to provide a large double bed.</p></center>
+        </div>
+      </div>
+    </center>
+  </div><br><br>
+  <center><button style= "font-weight: bold;
+    background: #12c064;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;cursor: pointer; border: none;" onclick="window.location.href='{% url 'Hotel:room_details' %}';">Check Availability now</button></center>
+</div>
+  
+    
+{% endblock content %}

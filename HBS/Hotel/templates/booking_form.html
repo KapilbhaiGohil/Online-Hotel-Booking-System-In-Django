@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Booking form{% endblock title %}
+{% block content %}
+<h1>Booking form</h1>
+<p style ="font-size:20px;">Pls verify details for booking</p>
+<form method = 'post' action="{% url 'Hotel:booking_form' %}">
+    {% if form.errors %}
+        </p>this is a error</p>
+    {% endif %}
+    {% csrf_token %}
+    <span style ="display:flex;padding: 0px 800px 0px 0px;">
+        <p>
+            <label for="id_First_name">First name:</label>
+            <input type="text" name="First_name" value = '{{request.user.first_name}}' required id="id_First_name">
+          </p>
+          <p>
+            <label for="id_Last_name">Last name:</label>
+            <input type="text" name="Last_name" value = '{{request.user.last_name}}' required id="id_Last_name">
+          </p>
+          <p>
+            <label for="id_Email">Email:</label>
+            <input type="email" name="Email" required value = '{{request.user.email}}' id="id_Email">
+          </p>
+    </span>
+    <span style ="display:flex;    padding: 0px 800px 0px 0px;">
+        <p>
+            <label for="id_Room_no">Room no:</label>
+            <input type="number" name="Room_no" required value="{{room.room_no}}" readonly id="id_Room_no">
+          </p>
+          <p>
+            <label for="id_Room_type">Room type:</label>
+            <input type="text" name="Room_type" required value="{{room.room_type}}" readonly id="id_Room_type">
+          </p>
+          <p>
+              <label for="id_Beds">Beds:</label>
+              <input type="number" name="Beds" required value="{{room.beds}}" readonly id="id_Beds">
+            </p>
+    </span>
+    <span style ="display:flex;    padding: 0px 800px 0px 0px;">
+      <p>
+        <label for="id_Capasity">Capasity:</label>
+        <input type="number" name="Capasity" required value="{{room.capasity}}" readonly id="id_Capasity">
+      </p>
+        <p>
+            <label for="id_check_in">Check in:</label>
+            <input type="date" name="check_in" required value="{{checkin}}" readonly id="id_check_in">
+          </p>
+          <p>
+              <label for="id_check_out">Check out:</label>
+              <input type="date" name="check_out" required value="{{checkout}}" readonly id="id_check_out">
+          </p>
+          
+    </span>
+    <span style ="display:flex;padding: 0px 1150px 0px 0px;">
+        <p>
+            <label for="id_total_price">Total price:</label>
+            <input type="number" name="total_price" required value="{{ amount }}" readonly id="id_total_price">
+        </p>
+        <p>
+            <label for="id_username">Username:</label>
+            <input type="text" name="username"  readonly value='{{request.user.username}}'  maxlength="150" required="" id="id_username">
+          </p>
+    </span>
+    <p><input type = 'submit'name ="booking" value='Make payment'></p>
+</form>
+{% endblock content %}

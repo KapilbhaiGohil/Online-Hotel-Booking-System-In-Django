@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock  %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    </head>
+    <style>
+
+        footer{
+            background-color: hsl(113, 46%, 85%);
+            position: relative;
+            bottom: -110px;
+            /* left: 0;
+            right: 0; */
+            width: 100%;
+        }
+        p{
+            color: #71302d;
+        }
+        .fa{
+            padding: 10px;
+            font-size: 30px;
+            width: 40px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            color: white;
+        }
+        .fa:hover {
+    opacity: 1;
+}
+        .fa.fa-facebook{
+            background-color: black;
+            border-radius: 15px;
+        }
+        .fa.fa-youtube{
+            background-color: black;
+            border-radius: 15px;
+        }
+        .fa.fa-instagram{
+            background-color: black;
+            border-radius: 15px;
+        }
+        .fa.fa-linkedin{
+            background-color: black;
+            border-radius: 15px;
+        }
+        .fa.fa-twitter{
+            background-color: black;
+            border-radius: 15px;
+        }
+        #foo{
+            font-size: larger;
+            font-weight: bolder;
+            position: relative;
+            top: 40px;
+
+        }
+        #fodiv{
+            display:inline-block;
+            position: relative;
+            top: 0px;
+        }
+        .fa.fa-youtube:hover{
+            background-color: #bb0000;
+        }
+        .fa.fa.fa-instagram:hover{ background-color:rgb(206, 67, 199);}
+        .fa.fa.fa-facebook:hover{ background-color: hsl(221, 100%, 50%);}
+        .fa.fa.fa-twitter:hover{ background-color: #157dcc;}
+        .fa.fa-linkedin:hover{background-color:  #00aeffd3;}
+        
+    </style>
+    <body>
+        <header  style="position:sticky;top:-12px;background-color:#12c064;">
+            <div id = 'header'>
+                <span class = 'logo'>
+                    <div id="mySidenav" class="sidenav">
+                        <div>
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        </div>
+                        {% if request.user.is_authenticated %}
+                        <a style="float:left;position: relative; left:30px" href="{% url 'Hotel:showbookings' %}">Show my bookings</a>
+                        <a style="float:left;position: relative; left:30px" href="{% url 'Hotel:editprofile' %}">Edit profile</a>
+                        <a style="float:left;position: relative; left:30px" href="{% url 'Hotel:password_change' %}">Change password</a>
+                        <a style="float:left;position: relative; left:30px" href='{% url "Hotel:cancellation" %}'>Cancellation info</a>
+                        <a style="float:left;position: relative; left:30px" href='{% url "Hotel:logout" %}'>Logout</a>
+                        {% else %}
+                        <a style="float:left;position: relative; left:30px" href='{% url "Hotel:register" %}'>Register</a><br>
+                        <a style="float:left;position: relative; left:30px" href='{% url "Hotel:login" %}'>Login</a>
+                        {% endif %}
+                    </div>
+                      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                      <script>
+                        function openNav() {
+                          document.getElementById("mySidenav").style.width = "250px";
+                        }
+                        
+                        function closeNav() {
+                          document.getElementById("mySidenav").style.width = "0";
+                        }
+                        </script>
+                </span>
+                {% if request.user.is_authenticated %}
+                <ul class="menu">   
+                    
+                    <li {% if section == "dashboard" %}class="selected"{% endif %}>
+                        <a href='{% url "Hotel:dashboard" %}'>Home</a>
+                    </li>
+                    <li {% if section == "about_us" %}class="selected"{% endif %}>
+                        <a href="{% url 'Hotel:aboutus' %}">About us</a>
+                    </li>
+                    <li {% if section == "book_a_room" %}class="selected"{% endif %}>
+                        <a href="{% url 'Hotel:room_details' %}">Rooms</a>
+                    </li>
+                    <li {% if section == "gallery" %}class="selected"{% endif %}>
+                        <a href="{% url 'Hotel:gallery' %}">Gallery</a>
+                    </li>
+                    <li {% if section == "contact" %}class="selected"{% endif %}>
+                        <a href="{% url 'Hotel:contact' %}">Contact us</a>
+                    </li>
+                </ul>
+                {% endif %}
+                <span class="user">
+                {% if request.user.is_authenticated %}
+                    Hello {{ request.user.first_name|default:request.user.username }}&nbsp
+                    <!-- <div style="display: inline-block;">
+                        <div>
+                            <a href="{% url 'Hotel:editprofile' %}">Edit profile</a>
+                            <a href="{% url 'Hotel:showbookings' %}">Show my bookings</a>
+                            {% comment %} <a href="#">Print bill</a> {% endcomment %}
+                            {% comment %} <a href="#">Change password</a> {% endcomment %}
+                            {% comment %} <a href="#">Logout</a> {% endcomment %}
+                        </div>
+                    </div>
+                    <a href='{% url "Hotel:logout" %}'>Logout</a>&nbsp&nbsp
+                    <a href="{% url 'Hotel:password_change' %}">Change password</a>
+                 -->
+               
+                {% else %}
+                    <a href='{% url "Hotel:login" %}'>Log-in</a>
+                {% endif %}
+                </span>
+            </div>
+        </header>
+        <div id = 'content'>
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <footer>
+            <div>
+                <center><p id="foo">Get In Touch</p><br><br>
+                <center>
+                <div id="fodiv">
+                    <a href="#" class="fa fa-facebook"></a> 
+                    <a href="#" class="fa fa-twitter"></a> 
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-instagram"></a>  
+                    <a href="#" class="fa fa-youtube"></a>   
+                </div>
+                <br>
+                <br>
+                <br><br>
+                </center>
+                <div>
+                    <div  style="text-align: justify;display: grid;grid-template-columns: 1fr 3fr;padding-left: 70px;">
+                        <div>
+                            <img src="/static/images/footer.png" alt=""><br>
+                            <span style="color: #71302d;;">PRIDE HOTELS LIMITED</span>
+                                <p>
+                                    THE RUBY, 5TH FLOOR, OFFICE NO.5 SC, SOUTH WING ON LEVEL 8TH, SENAPATI BAPAT MARG,<br>
+                                    MUMBAI – 400 028
+                                </p>
+                                    <div >
+                                        <a href="#" style="background-color:  #cdebc9; color: #71302d;" class="fa fa-facebook"></a> 
+                                        <a href="#" style="background-color:  #cdebc9;color: #71302d;"class="fa fa-twitter"></a> 
+                                        <a href="#" style="background-color:  #cdebc9;color: #71302d;"class="fa fa-linkedin"></a>
+                                        <a href="#" style="background-color:  #cdebc9;color: #71302d;"class="fa fa-instagram"></a>  
+                                        <a href="#" style="background-color:  #cdebc9;color: #71302d;"class="fa fa-youtube"></a>   
+                                    </div>
+                        </div>
+                        <div>
+                            <!-- <hr width="400%" style="position: relative; left: -500px;"> -->
+                            <center>
+                                <div>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56073.03801839432!2d77.05296465820312!3d28.552795699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1c69a0e02065%3A0x19b905d117e1214!2sPride%20Plaza%20Hotel%20Aerocity%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1679994676218!5m2!1sen!2sin" width="600" height="300" style="border:0;float: right;margin-right: 70px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                    <br>
+                    <hr width="60%">
+                    <ul style="display: inline-flex;list-style: none;">   
+                        <li>
+                            <a  style="color: #71302d;" href='{% url "Hotel:dashboard" %}'>Home</a>&nbsp;&nbsp;&nbsp;
+                        </li>
+                        <li>
+                            <a  style="color: #71302d;" href="{% url 'Hotel:aboutus' %}">About us</a>&nbsp;&nbsp;&nbsp;
+                        </li>
+                        <li>
+                            <a  style="color: #71302d;" href="{% url 'Hotel:room_details' %}">Rooms</a>&nbsp;&nbsp;&nbsp;
+                        </li>
+                        <li>
+                            <a  style="color: #71302d;" href="#">Gallery</a>&nbsp;&nbsp;&nbsp;
+                        </li>
+                        <li>
+                            <a style="color: #71302d;" href="{% url 'Hotel:contact' %}">Contact us</a>&nbsp;&nbsp;&nbsp;
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <center>
+                <p style="font-size: 15px;margin-top: -10px;margin-bottom: 0px;">&copy;2023 The Pride Plaza Hotel,All rights reserved.</p>
+            </center>
+        </footer>
+    </body>
+</html>

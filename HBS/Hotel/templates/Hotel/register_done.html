@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock title %}
+{% block content %}
+{% if check %}
+<h1>OTP Verification</h1>
+<p>Enter the otp sent to your mail</p>
+<form method = 'post'>
+    {% csrf_token %}
+    {% if error %}
+    <p style='color:#d75151;'>Pls enter the otp sent to the your email address</p>
+    {% endif %}
+    <p><input type='number' required name ='code'>
+        <p><input type='hidden' value='{{new_user.usrname}}' name ='new_user'>
+        <input type='submit' name = 'veri' value ='Verify'>
+    </p>
+</form>
+{% else %}
+<h1>Welcome {{new_user.first_name}}!</h1>
+<p>Your account has been succesfully created.
+    Now you can <a href="{% url 'Hotel:login' %}">log in</a>
+</p>
+{% endif %}
+{% endblock content %}

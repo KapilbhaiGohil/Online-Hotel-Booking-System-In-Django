@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Edit Profile
+{% endblock title %}
+{% block content %}
+<h1>Profile Information</h1>
+<p>You can change your profile information below</p>
+<form method='post'>
+  {% if error %}
+  <p style="color:#d75151;">{{error}}</p>
+  {% endif %}
+    <p>
+            <label for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" value='{{username}}' required id="id_username">
+    </p>
+    <p>
+        <label for="id_first_name">First name:</label>
+        <input type="text" name="first_name" maxlength="150" value='{{first}}'required id="id_first_name">
+      </p>
+      <p>
+        <label for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" maxlength="150" value='{{last}}' required id="id_last_name">
+      </p>
+      <p>
+        <label for="id_email">Email address:</label>
+        <input type="email" name="email" maxlength="254"  value='{{email}}' required id="id_email">
+      </p>
+      <br>
+      <p><input type = 'submit'value='Save Changes'></p>
+      {% csrf_token %}
+</form>
+{% comment %} <script type = "text/javascript" >  
+  function preventBack() { window.history.forward(); }  
+  setTimeout("preventBack()", 0);  
+  window.onunload = function () { null };  
+</script>  {% endcomment %}
+{% endblock content %}

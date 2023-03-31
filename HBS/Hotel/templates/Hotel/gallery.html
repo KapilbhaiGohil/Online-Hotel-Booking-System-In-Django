@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% block title %}
+Gallery
+{% endblock title %}
+{% block content %}
+<style>
+    img{
+        border-radius: 8px;
+        /* transition: transform .2s; */
+    }
+    img:hover{
+        cursor: pointer;
+        /* transform: scale(1.5); */
+    }
+    div{
+        overflow: hidden;
+    } 
+</style>
+<center><h1 style="color: #be863c;font-weight: bolder;">All Photos</h1></center>
+<div style="display: grid;grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(13,minmax(0,1fr)); column-gap: 20px;row-gap: 20px;">
+    <div>
+        <img src="/static/images/gallery/g1.jpg" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g2.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g3.jfif" width="100%"alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g4.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g5.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g6.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g7.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g8.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g9.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g10.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g11.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g12.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g13.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g14.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g15.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g16.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g17.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g18.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g19.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g20.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g21.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g22.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g23.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g24.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g25.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g26.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g27.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g28.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g29.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g30.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g31.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g32.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g33.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g34.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g35.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g36.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g37.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g38.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g39.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g40.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g41.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g42.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g43.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g44.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g45.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g46.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g47.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g48.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g49.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g50.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g51.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g52.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g53.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g54.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g55.jfif" width="100%" alt="">
+    </div>
+    <div>
+        <img src="/static/images/gallery/g56.jfif" width="100%" alt="">
+    </div>
+
+</div>
+{% endblock content %}
